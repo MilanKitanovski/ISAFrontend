@@ -1,16 +1,18 @@
 <p>loginpage works!</p>
 
-<div>
+<!-- <form (ngSubmit)="login()">  -->
     <div>
-        <label>Email</label>
-        <input type="text" required>
-    </div>
+        <div>
+            <label>Email</label>
+            <input type="text" required>
+        </div>
 
-    <div>  
-        <label>Password</label>
-        <input type="password"  required >
+        <div>  
+            <label>Password</label>
+            <input type="password"  required >
+        </div>
+        <div>
+            <button (click)="login()" type="submit">Login</button>
+        </div>
     </div>
-    <div>
-        <button>Login</button>
-    </div>
-</div>
+<!-- </form> -->

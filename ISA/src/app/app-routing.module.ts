@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { CenterspageComponent } from './components/centerspage/centerspage.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { LoginpageComponent } from './components/loginpage/loginpage.component';
-import { MyProfileComponent } from './my-profile/my-profile.component';
+import { MyProfileComponent } from './components/my-profile/my-profile.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginpageComponent},

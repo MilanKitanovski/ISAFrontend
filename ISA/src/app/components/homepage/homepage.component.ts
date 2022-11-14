@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-homepage',
@@ -8,8 +8,11 @@ import { Component, OnInit } from '@angular/core';
 export class HomepageComponent implements OnInit {
 
   constructor() { }
+  token = localStorage.getItem("token")
+  
 
   ngOnInit(): void {
+    console.log(this.token)
   }
 
 }

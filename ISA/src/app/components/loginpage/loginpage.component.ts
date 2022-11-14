@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-loginpage',
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginpageComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
+  
 
   ngOnInit(): void {
+   
   }
 
+  login(){
+    localStorage.setItem("token", "true")
+    this.router.navigate(['/my-profile'])
+  }
+
+  onChange(event:any){
+    
+  }
 }

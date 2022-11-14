@@ -7,7 +7,8 @@ import { HomepageComponent } from './components/homepage/homepage.component';
 import { LoginpageComponent } from './components/loginpage/loginpage.component';
 import { HeaderpageComponent } from './components/headerpage/headerpage.component';
 import { CenterspageComponent } from './components/centerspage/centerspage.component';
-import { MyProfileComponent } from './my-profile/my-profile.component';
+import { MyProfileComponent } from './components/my-profile/my-profile.component';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { MyProfileComponent } from './my-profile/my-profile.component';
     LoginpageComponent,
     HeaderpageComponent,
     CenterspageComponent,
-    MyProfileComponent
+    MyProfileComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
