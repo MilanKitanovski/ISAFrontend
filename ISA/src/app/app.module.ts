@@ -9,6 +9,9 @@ import { HeaderpageComponent } from './components/headerpage/headerpage.componen
 import { CenterspageComponent } from './components/centerspage/centerspage.component';
 import { MyProfileComponent } from './components/my-profile/my-profile.component';
 import { RegisterComponent } from './components/register/register.component';
+import { PasswordChangeComponent } from './components/password-change/password-change.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,11 +21,14 @@ import { RegisterComponent } from './components/register/register.component';
     HeaderpageComponent,
     CenterspageComponent,
     MyProfileComponent,
-    RegisterComponent
+    RegisterComponent,
+    PasswordChangeComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

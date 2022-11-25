@@ -1,5 +1,9 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { SignInRequestPayload } from './login-request';
+import { UserServiceService } from 'src/app/service/userService/user-service.service';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-loginpage',
@@ -8,21 +12,51 @@ import { Router } from '@angular/router';
 })
 export class LoginpageComponent implements OnInit {
 
+  signInRequest: SignInRequestPayload;
+  loginForm!: FormGroup;
+  isExist: boolean = false;
+
   constructor(
-    private router: Router
-  ) { }
+    private userService: UserServiceService, private router: Router) { 
+      this.signInRequest = {
+        email:'',
+        password: ''
+      }
+  }
   
-
   ngOnInit(): void {
-   
+   this.loginForm = new FormGroup({
+    email: new FormControl('', Validators.minLength(2)),
+    password: new FormControl()
+   })
   }
 
-  login(){
-    localStorage.setItem("token", "true")
-    this.router.navigate(['/my-profile'])
-  }
-
-  onChange(event:any){
+  onSubmit():void {
     
   }
+  
+
+  signin(){
+    this.signInRequest.email = this.loginForm.get('email')?.value;
+    this.signInRequest.password = this.loginForm.get('password')?.value;
+    console.log(this.signInRequest)
+    this.userService.signIn(this.signInRequest).subscribe(data => {
+      this.isExist = false;
+      const user = JSON.parse(data);
+      localStorage.setItem("token", user.token);
+      // this.router.navigate(['/my-profile?email='+this.signInRequest.email]);
+    }, error => {
+      if(error['status'] == 403){
+        this.isExist = true;
+      }
+    });
+  }
+
+  // login(){
+    
+  // }
+
+  // onChange(event:any){
+    
+  // }
 }

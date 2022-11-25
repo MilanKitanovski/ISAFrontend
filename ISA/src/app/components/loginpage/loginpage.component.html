@@ -1,18 +1,19 @@
 <p>loginpage works!</p>
 
-<!-- <form (ngSubmit)="login()">  -->
+<form (ngSubmit)="signin()" [formGroup]="loginForm" > <!--(ngSubmit)="login()"-->
     <div>
         <div>
             <label>Email</label>
-            <input type="text" required>
+            <input [formControlName]="'email'" type="text" required>
         </div>
 
         <div>  
             <label>Password</label>
-            <input type="password"  required >
+            <input  [formControlName]="'password'" type="password"  required >
         </div>
         <div>
-            <button (click)="login()" type="submit">Login</button>
+            <button  type="submit">Login</button> <!-- (click)="login()"-->
         </div>
     </div>
-<!-- </form> -->
+</form>
+<router-outlet></router-outlet>

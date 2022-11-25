@@ -5,12 +5,14 @@ import { CenterspageComponent } from './components/centerspage/centerspage.compo
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { LoginpageComponent } from './components/loginpage/loginpage.component';
 import { MyProfileComponent } from './components/my-profile/my-profile.component';
+import { PasswordChangeComponent } from './components/password-change/password-change.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginpageComponent},
   {path: 'home',component: HomepageComponent},
   {path: 'centres', component: CenterspageComponent},
-  {path: 'my-profile', component: MyProfileComponent}
+  {path: 'my-profile', component: MyProfileComponent},
+  {path: 'password-change', component: PasswordChangeComponent }
 ];
 
 @NgModule({

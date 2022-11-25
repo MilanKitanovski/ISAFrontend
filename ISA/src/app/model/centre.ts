@@ -1,5 +1,6 @@
 
 export interface Centre{
+    centreId: number
     name: string,
     address: string,
     longitude: number,

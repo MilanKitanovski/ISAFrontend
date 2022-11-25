@@ -1,5 +1,28 @@
 <p>centerspage works!</p>
-<div>
+<!-- <div>
 <input type="text" placeholder="Search..">
 <button>Search</button>
+</div> -->
+
+<div>
+    <input placeholder="Name" class="input-style" [formControlName]="'searchCentre.searchName'">
+    <input placeholder="Surname" class="input-style" [formControlName]="'searchCentre.searchAddress'">
+    <button mat-flat-button color="primary" style="width: 100px" (click)="search()">Search</button>
 </div>
+
+
+
+<!-- <table  id="tabela">
+    <thead>
+        <tr >
+            <th>Name</th>
+            <th>Address</th>
+        </tr>
+    </thead>
+
+    <tr v-for="c in centre">
+        <td>{{c.address}</td>
+        <td>{{c.name}}</td>
+    </tr>
+
+</table>	 -->
