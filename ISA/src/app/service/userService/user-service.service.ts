@@ -48,13 +48,13 @@ export class UserServiceService {
     return this.httpClient.put(this.baseUrl +'/api/users/update-user/' + user.id, user, options);
   }
 
-  changePassword(passwordChange: Password): Observable<any>{
+  changePassword(data: any): Observable<any>{
     let headers = new HttpHeaders({
       "Content-Type" : "application/json",
       "Authorization" : "Bearer " + localStorage.getItem("token"),
     });
     let options = {headers:headers};
-    return this.httpClient.put(this.baseUrl +'/api/users/'+ passwordChange.userId + '/passwordChange', passwordChange, options);
+    return this.httpClient.put(this.baseUrl +'/api/users/passwordChange', data, options);
   }
 
   returnUser(): Observable<User> {

@@ -10,13 +10,16 @@ import { CentreSearchRequest } from 'src/app/model/CentreSearchRequest';
 export class CentreService {
 
   apiHost: string = 'http://localhost:8080/';
-  headers: HttpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
+  headers: HttpHeaders = new HttpHeaders({ 'Content-Type': 'application/json',
+                                                  'Access-Control-Allow-Origin' : '*',
+    "Authorization" : "Bearer " + localStorage.getItem("token"), //autorizacija
+  });
 
   constructor(private http: HttpClient) { }
 
 
-  getAllCentres(): Observable<any[]> {
-    return this.http.get<Centre[]>(this.apiHost + 'api/centres/getCentres', {headers: this.headers});
+  getAllCentres(): Observable<Centre[]> {
+    return this.http.get<Centre[]>(this.apiHost + 'api/centres', {headers: this.headers});
   }
 
   searchAllCentres(dto:CentreSearchRequest): Observable<any[]> {
@@ -26,4 +29,5 @@ export class CentreService {
   searchCentres(dto:CentreSearchRequest): Observable<any> {
     return this.http.post<Centre>(this.apiHost + 'api/centres/searchCentres/'+dto.centerId,dto,{headers: this.headers});
   }
+
 }

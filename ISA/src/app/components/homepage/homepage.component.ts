@@ -9,10 +9,13 @@ export class HomepageComponent implements OnInit {
 
   constructor() { }
   token = localStorage.getItem("token")
-  
+
 
   ngOnInit(): void {
     console.log(this.token)
   }
 
+  logout() {
+    localStorage.clear();
+  }
 }

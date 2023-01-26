@@ -48,7 +48,7 @@ export class MyProfileComponent implements OnInit {
   ngOnInit(): void {
 
     this.changeInfoForm = new FormGroup({
-      name: new FormControl('', Validators.required),
+      name: new FormControl('', Validators.required),  //validacija
       surname: new FormControl('', Validators.required),
       address: new FormControl('', Validators.required),
       city: new FormControl('', Validators.required),
@@ -80,7 +80,7 @@ export class MyProfileComponent implements OnInit {
           
       // })
 
-      this.changeInfoForm.controls['name'].setValue(response.name);
+      this.changeInfoForm.controls['name'].setValue(response.name);  //set param forme
       this.changeInfoForm.controls['surname'].setValue(response.surname);
       this.changeInfoForm.controls['address'].setValue(response.address);
       this.changeInfoForm.controls['city'].setValue(response.city);
@@ -121,12 +121,14 @@ export class MyProfileComponent implements OnInit {
   }
 
   passwordChange(userID: number){
-    this.router.navigate(['/password-change',userID])
+    this.router.navigate(['/password-change'])
+
+    
   }
 
   changeInfo() {
     console.log(this.user)
-   this.user.name = this.changeInfoForm.get("name")?.value;
+   this.user.name = this.changeInfoForm.get("name")?.value;  //preuzimanje param forme
    this.user.surname = this.changeInfoForm.get("surname")?.value;
    //this.user.email = this.changeInfoForm.get("email")?.value;
   //  this.user.password = this.changeInfoForm.get("password")?.value;
@@ -141,6 +143,7 @@ export class MyProfileComponent implements OnInit {
    this.user.userType = this.changeInfoForm.get("userType")?.value;
    this.user.information = this.changeInfoForm.get("information")?.value;
 
+   console.log(this.changeInfoForm.get("gender")?.value)
    this.userService.changeUser(this.user).subscribe((response: HttpStatusCode) => {
     if(HttpStatusCode.Ok){
       this.successfully = true

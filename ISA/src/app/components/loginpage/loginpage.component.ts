@@ -44,7 +44,6 @@ export class LoginpageComponent implements OnInit {
       this.isExist = false;
       const user = JSON.parse(data);
       localStorage.setItem("token", user.token);
-      // this.router.navigate(['/my-profile?email='+this.signInRequest.email]);
     }, error => {
       if(error['status'] == 403){
         this.isExist = true;

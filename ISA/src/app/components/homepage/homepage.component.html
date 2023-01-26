@@ -12,13 +12,14 @@
   <a href="#" class="w3-bar-item w3-hover-green">Home Page</a>
   <a href="/centres" class="w3-bar-item w3-hover-green">Centers</a>
   <a *ngIf="token=='Uspesno logovan'" href="/my-profile" class="w3-bar-item w3-hover-green">My Profile</a>
+  <a (click)="logout()"  href="#" class="w3-bar-item w3-hover-green" [ngClass]="token == ''? {'display':'block'} : {'display':'none'}">Logout</a>
+</div>
+{{token}}
+
+
 </div>
 
 
-
-</div>
-
- 
 
 <router-outlet></router-outlet>
 </body>

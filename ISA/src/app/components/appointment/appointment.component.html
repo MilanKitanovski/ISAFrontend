@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <mat-form-field appearance="fill">
+        <input matInput [ngxMatDatetimePicker]="date" placeholder="choose a date" [(ngModel)]="pickerDate">
+        <mat-datepicker-toggle matSuffix [for]="$any(date)"></mat-datepicker-toggle>
+        <ngx-mat-datetime-picker #date></ngx-mat-datetime-picker>
+      </mat-form-field>
+    </div>
+    <div class="col">
+      <mat-form-field appearance="fill">
+        <mat-label>Center</mat-label>
+        <mat-select [(ngModel)]="center">
+          <mat-option *ngFor="let c of centers" [value]="c">
+            {{c.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="col">
+      <mat-form-field appearance="fill">
+        <mat-label>Choose duration of appointment</mat-label>
+        <input matInput type="number" placeholder="Please input minutes" [(ngModel)]="duration">
+      </mat-form-field>
+    </div>
+    <div class="col">
+      <button class="btn btn-primary" (click)="save(center)">Save</button>
+    </div>
+  </div>
+
+  <div class="row">
+    <table class="table table-striped table-hover">
+      <thead>
+      <tr>
+        <th>Date and Time</th>
+        <th>Duration</th>
+        <th>Center name</th>
+        <th>Center address</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let a of appointments">
+        <td>{{format(a.dateAndTime)}}</td>
+        <td>{{a.duration}}</td>
+        <td>{{a.centre.name}}</td>
+        <td>{{a.centre.address}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

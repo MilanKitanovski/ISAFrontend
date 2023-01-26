@@ -17,9 +17,10 @@ export class PasswordChangeComponent implements OnInit {
     private userService: UserServiceService,
     private router: Router) { }
 
-  user!: User;
+ 
   urlIDParam!: string | null;
   changePasswordForm!: FormGroup;
+
   id!: number
   error: boolean = false;
   passwordError: boolean = false;
@@ -32,7 +33,6 @@ export class PasswordChangeComponent implements OnInit {
   httpStatus!: HttpStatusCode;
 
 
-
   ngOnInit(): void {
     this.changePasswordForm = new FormGroup({
       oldPassword: new FormControl('', Validators.required),
@@ -40,26 +40,23 @@ export class PasswordChangeComponent implements OnInit {
       newPassword2: new FormControl('', Validators.required)
     })
 
-  //   this.urlIDParam = this.route.snapshot.paramMap.get('id');
-  //   if(this.urlIDParam != null){
-  //     this.id =+ this.urlIDParam;
-  //     this.userService.getOneUser(this.id).subscribe((response: User) =>{
-  //       this.user = response;
-  //     },
-  //     error => {
-  //       this.router.navigate(["error"])
-  //     })
-  //   }
      }
 
   changePasswordF(){
-    this.password.userId = this.user.id;
-    this.password.oldPassword = this.changePasswordForm.get("oldPassword")?.value;
-    this.password.newPassword1 = this.changePasswordForm.get("newPassword1")?.value;
-    this.password.newPassword2 = this.changePasswordForm.get("newPassword2")?.value;
-    this.userService.changePassword(this.password).subscribe((response: Password) => {
+    console.log(this.changePasswordForm.get("newPassword1")?.value)
+    console.log(this.changePasswordForm.get("newPassword2")?.value)
+    if(this.changePasswordForm.get("newPassword1")?.value != this.changePasswordForm.get("newPassword2")?.value){
+      alert('Sifre nisu jednake')
+
+      return;
+    }
+    
+    this.userService.changePassword({
+      oldPassword : this.changePasswordForm.get("oldPassword")?.value,
+      newPassword : this.changePasswordForm.get("newPassword1")?.value
+    }).subscribe((response: Password) => {
       console.log(response)
-      this.router.navigate(["info"]);
+      
     },
     (status: HttpStatusCode) => {
       if(HttpStatusCode.NotFound){
@@ -68,5 +65,6 @@ export class PasswordChangeComponent implements OnInit {
     })
 
   }
+
 
 }

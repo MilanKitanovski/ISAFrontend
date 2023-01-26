@@ -1,6 +1,8 @@
+import {Centre} from "./centre";
 
 export interface Appointment{
-    centreId: number,
+    id: number
+    centre: Centre,
     dateAndTime: Date,
     duration: number
 }
